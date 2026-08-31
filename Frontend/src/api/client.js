@@ -1,8 +1,15 @@
-const API_BASE_URL = (
+let rawUrl = (
   import.meta.env.VITE_API_URL || 
   import.meta.env.VITE_API_BASE_URL || 
   'https://pathcraft-pxfb.onrender.com/api'
-).replace(/\/$/, '');
+).trim().replace(/\/$/, '');
+
+if (!rawUrl.endsWith('/api')) {
+  rawUrl = `${rawUrl}/api`;
+}
+
+const API_BASE_URL = rawUrl;
+
 
 
 
